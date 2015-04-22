@@ -1,7 +1,30 @@
 angular.module('shortly.services', [])
 
 .factory('Links', function ($http) {
-  // Your code here
+
+  var getLinks = function(){
+    return $http({
+      method:'GET',
+      url: '/api/links',
+    })
+    .then(function (resp){
+      return resp.data;
+    });
+  };
+
+  var addLink = function(linkToAdd){
+    return $http({
+      method: 'POST',
+      url: '/api/links',
+      data: linkToAdd
+    }).then(function(resp){
+      return resp.data.token;
+    });
+  };
+  return {
+    getLinks: getLinks,
+    addLink: addLink
+  };
 })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
@@ -12,6 +35,7 @@ angular.module('shortly.services', [])
   // after you signin/signup open devtools, click resources,
   // then localStorage and you'll see your token from the server
   var signin = function (user) {
+    console.log('auth sign in factory &&&&&&&&')
     return $http({
       method: 'POST',
       url: '/api/users/signin',
