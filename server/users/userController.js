@@ -4,6 +4,7 @@ var User = require('./userModel.js'),
 
 module.exports = {
   signin: function (req, res, next) {
+    console.log('sign in funciton')
     var username = req.body.username,
         password = req.body.password;
 
@@ -30,6 +31,7 @@ module.exports = {
   },
 
   signup: function (req, res, next) {
+    console.log('sign up funciton')
     var username  = req.body.username,
         password  = req.body.password,
         create,
@@ -63,6 +65,7 @@ module.exports = {
   },
 
   checkAuth: function (req, res, next) {
+    console.log("INSIDE CHECK AUTH!!!!!!!!!!!!!!!!!!!")
     // checking to see if the user is authenticated
     // grab the token in the header is any
     // then decode the token, which we end up being the user object

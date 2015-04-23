@@ -1,5 +1,5 @@
 var linksController = require('./linkController.js');
-
+var userController = require('../users/userController.js');
 module.exports = function (app) {
   // app === linkRouter injected from middleware.js
 
@@ -12,6 +12,11 @@ module.exports = function (app) {
   app.route('/')
     .get(linksController.allLinks)
     .post(linksController.newLink);
+
+  // app.route('/#')
+  //   .get(linksController.allLinks)
+  //   .post(linksController.newLink);
+
 
   app.get('/:code', linksController.navToLink);
 

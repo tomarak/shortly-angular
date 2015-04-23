@@ -7,6 +7,7 @@ angular.module('shortly.auth', [])
   $scope.user = {};
 
   $scope.signin = function () {
+    console.log($scope.user, 'pop');
     Auth.signin($scope.user)
       .then(function (token) {
         console.log("signed in brah");
@@ -28,4 +29,14 @@ angular.module('shortly.auth', [])
         console.error(error);
       });
   };
+
+  $scope.signout = function(){
+    console.log('signout authoutsidebro')
+    Auth.signout($scope.user).then(function(){
+      console.log('signout auth')
+    }).catch(function(){
+      console.log('err');
+    })
+  }
+
 });

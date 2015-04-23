@@ -4,10 +4,12 @@
       <a href="#" class="index selected"> All links</a>
     </li>
     <li>
-      <a href="#" class="create">Shorten</a>
+      <a href="#/shorten" class="create" >Shorten</a>
     </li>
     <li>
-      <a href="#" class="logout">Logout</a>
+      <a href="#" class="logout"
+      ng-controller="AuthController"
+      ng-click="signout()">Logout</a>
     </li>
   </ul>
 </div>
