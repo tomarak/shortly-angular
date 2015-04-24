@@ -4,9 +4,38 @@
 <div id='container'>
 <!-- Your code here -->
   <form name="linkSubmit" ng-submit='addLink()'>
-    <input type='text' ng-model='link.url'>
-    <button>submit</button>
+    <input name="link" type='url' ng-model='link.url'
+    placeholder="enter your url here" required
+    ng-class="{'error': linkSubmit.$invalid && linkSubmit.$dirty}"/>
+    <button value="Shorten" ng-disabled='linkSubmit.$invalid'>submit</button>
   </form>
+
+  <div ng-if='linkSubmit.link.$error.required && linkSubmit.$dirty' class="message">
+    <h2>ADD A GODDAMNED URL</h2>
+  </div>
+
+  <div ng-show='linkSubmit.link.$error.url && linkSubmit.$dirty' class="message">
+  <h2>DO IT AGAIN</h2>
+  </div>
+
+  <!--
+  <div class = "links">
+    <div class="link" ng-repeat = "difflink in recentlyAdded ">
+     <img src="assets/redirect_icon.png">
+      <div class="info">
+        <div class="visits">
+          <span class="count">{{difflink.visits}}</span>
+        </div>
+        <div class ="title">{{difflink.title}}</div>
+        <div class="original">{{difflink.url}}</div>
+        <a href = "{{difflink.base_url}}/{{difflink.code}}">
+          {{difflink.base_url}}/{{difflink.code}}
+        </a>
+
+      </div>
+    </div>
+    -->
+  </div>
 </div>
 
 

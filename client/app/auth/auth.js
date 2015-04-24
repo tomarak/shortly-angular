@@ -32,11 +32,7 @@ angular.module('shortly.auth', [])
 
   $scope.signout = function(){
     console.log('signout authoutsidebro')
-    Auth.signout($scope.user).then(function(){
-      console.log('signout auth')
-    }).catch(function(){
-      console.log('err');
-    })
+    Auth.signout($scope.user)
   }
 
 });
